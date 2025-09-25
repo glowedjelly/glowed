@@ -100,6 +100,19 @@ app.post("/link", (req, res) => {
   );
 });
 
+// Homepage
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+// Profile search redirect
+app.get("/profile", (req, res) => {
+  const id = req.query.robloxId;
+  if (!id) return res.redirect("/");
+  res.redirect("/profile/" + id);
+});
+
+
 // Profile page showing playtime
 app.get("/profile/:robloxId", (req, res) => {
   const robloxId = req.params.robloxId;
